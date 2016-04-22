@@ -21,7 +21,9 @@ Requires djangorestframework>=3.3.0. Tested on Django 1.8 and 1.9.
 ### Required
 
 UPS_USERNAME
+
 UPS_PASSWORD
+
 UPS_ACCESS_LICENSE_NUMBER
 
 ### Override defaults
