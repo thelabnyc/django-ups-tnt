@@ -8,7 +8,15 @@ in javascript.
 It provides some defaults to make the api easier to work with.
 It also provides some form validation before hitting the UPS API and cache
 
-## settings
+# Installation
+
+Requires djangorestframework>=3.3.0. Tested on Django 1.8 and 1.9.
+
+1. Add `django-ups-tnt` to requirements.txt or pip install.
+2. Add `url(r'^api/', include('ups_tnt.urls')),` to urls.py
+3. Set required settings in settings.py
+
+## Settings
 
 ### Required
 
