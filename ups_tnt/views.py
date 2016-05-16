@@ -5,8 +5,6 @@ from rest_framework.views import APIView
 from .serializers import TimeInTransitRequestSerializer
 from .tnt import fetch_estimated_arrival_times
 from . import settings
-from .exceptions import UPSException
-import dateutil.parser
 
 
 cache = caches[settings.UPS_CACHE_NAME]
@@ -20,10 +18,12 @@ class TimeInTransitView(APIView):
     Example json request
 
     ```
-    "ship_to": {
-        "city": "New York",
-        "state_province_code": "NY",
-        "postal_code": "10031",
+    {
+        "ship_to": {
+            "city": "New York",
+            "state_province_code": "NY",
+            "postal_code": "10031"
+        }
     }
     ```
     """

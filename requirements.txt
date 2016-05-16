@@ -6,3 +6,4 @@ simplejson==3.8.2
 versiontag==1.0.3
 djangorestframework==3.3.3
 python-dateutil==2.5.2
+markdown>=2.1.0
