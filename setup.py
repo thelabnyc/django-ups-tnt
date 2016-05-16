@@ -33,7 +33,6 @@ setup(
     name='django-ups-tnt',
     description="Django wrapper around UPS Time In Transit JSON API",
     version=get_version(pypi=True),
-    long_description=open('README.rst').read(),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
