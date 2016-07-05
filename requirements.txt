@@ -1,4 +1,4 @@
-Django==1.8.12
+Django==1.9.7
 mock==2.0.0
 requests==2.9.1
 responses==0.5.1

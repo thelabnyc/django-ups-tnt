@@ -32,7 +32,7 @@ cache_git_tag()
 setup(
     name='django-ups-tnt',
     description="Django wrapper around UPS Time In Transit JSON API",
-    version='1.0.0',
+    version='1.0.1',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
@@ -44,7 +44,6 @@ setup(
         'Operating System :: Unix',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
     ],
     author='David Burke',
