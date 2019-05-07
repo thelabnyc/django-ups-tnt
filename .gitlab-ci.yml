@@ -1,9 +1,14 @@
 stages:
   - test
 
-before_script:
-  - pip install -r requirements.txt
-  - export PYTHONPATH=`pwd`
+cache:
+  key: "$CI_PROJECT_NAME"
+  paths:
+    - $HOME/.cache/pip
+
+include:
+  - project: thelabnyc/gitlab-ci-templates
+    file: /ci/sast.gitlab-ci.yml
 
 test_python35:
   stage: test
