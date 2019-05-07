@@ -1,10 +1,9 @@
-from django.test import override_settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from rest_framework.test import APITestCase
 from ups_tnt import settings
 from ups_tnt.tnt import ups_url
-from .test_responses import SUCCESS_RESPONSE, BAD_AUTH_RESPONSE
 from contextlib import contextmanager
+from .test_responses import SUCCESS_RESPONSE, BAD_AUTH_RESPONSE
 import responses
 import datetime
 
@@ -41,6 +40,7 @@ def get_buffer():
 
 
 class UPSTests(APITestCase):
+
     @responses.activate
     def test_time_in_transit(self):
         if settings.UPS_TEST_LIVE is False:
@@ -101,6 +101,7 @@ class UPSTests(APITestCase):
         res = self.client.post(url, data, format='json')
         self.assertEqual(res.status_code, 400)
 
+
     @setting(UPS_BUFFER_DAYS=get_buffer)
     def test_callable_buffer_time(self):
         url = reverse('time-in-transit')
@@ -110,7 +111,8 @@ class UPSTests(APITestCase):
             }
         }
         with self.assertRaises(CallException):
-            res = self.client.post(url, data, format='json')
+            self.client.post(url, data, format='json')
+
 
     @setting(UPS_USERNAME="fail")
     @responses.activate
