@@ -14,7 +14,7 @@ packages = find_packages('src')
 install_requires = [
     'Django>=1.11',
     'requests>=2.9.1',
-    'djangorestframework>=3.9',
+    'djangorestframework>=3.10',
     'python-dateutil>=2.5.2',
 ]
 
