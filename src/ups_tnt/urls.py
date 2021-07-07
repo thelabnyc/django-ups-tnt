@@ -4,7 +4,7 @@ from .views import TimeInTransitView
 
 
 urlpatterns = [
-    url(r'^tnt/$', TimeInTransitView.as_view(), name='time-in-transit'),
+    url(r"^tnt/$", TimeInTransitView.as_view(), name="time-in-transit"),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

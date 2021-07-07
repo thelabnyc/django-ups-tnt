@@ -7,6 +7,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-@shared_task(bind=True, throws=(UPSException, ))
+@shared_task(bind=True, throws=(UPSException,))
 def task_fetch_estimated_arrival_times(**kwargs):
     return fetch_estimated_arrival_times(**kwargs)

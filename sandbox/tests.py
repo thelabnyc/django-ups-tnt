@@ -27,7 +27,9 @@ def setting(**patches):
             with patch_settings(**patches):
                 ret = fn(*args, **kwargs)
             return ret
+
         return wrapped
+
     return wrap
 
 
@@ -40,29 +42,34 @@ def get_buffer():
 
 
 class UPSTests(APITestCase):
-
     @responses.activate
     def test_time_in_transit(self):
         if settings.UPS_TEST_LIVE is False:
-            responses.add(responses.POST, ups_url, body=SUCCESS_RESPONSE, status=200, content_type='application/json')
-        url = reverse('time-in-transit')
+            responses.add(
+                responses.POST,
+                ups_url,
+                body=SUCCESS_RESPONSE,
+                status=200,
+                content_type="application/json",
+            )
+        url = reverse("time-in-transit")
         data = {
             "ship_to": {
                 "postal_code": "10031",
             }
         }
-        res = self.client.post(url, data, format='json')
+        res = self.client.post(url, data, format="json")
         self.assertEqual(res.status_code, 200)
-        arrives_on = res.data['ServiceSummary'][0]['EstimatedArrival']['DateTime'][:10]
-        arrives_on = datetime.datetime.strptime(arrives_on, '%Y-%m-%d')
+        arrives_on = res.data["ServiceSummary"][0]["EstimatedArrival"]["DateTime"][:10]
+        arrives_on = datetime.datetime.strptime(arrives_on, "%Y-%m-%d")
         self.assertIsInstance(arrives_on, datetime.datetime)
 
         # Test required fields
-        res = self.client.post(url, {'ship_to': []}, format='json')
+        res = self.client.post(url, {"ship_to": []}, format="json")
         self.assertEqual(res.status_code, 400)
 
-        data = {'ship_to': {"city": "New York"}}
-        res = self.client.post(url, data, format='json')
+        data = {"ship_to": {"city": "New York"}}
+        res = self.client.post(url, data, format="json")
         self.assertEqual(res.status_code, 400)
 
         data = {
@@ -71,7 +78,7 @@ class UPSTests(APITestCase):
                 "state_province_code": "NY",
             }
         }
-        res = self.client.post(url, data, format='json')
+        res = self.client.post(url, data, format="json")
         self.assertEqual(res.status_code, 400)
 
         data = {
@@ -81,7 +88,7 @@ class UPSTests(APITestCase):
                 "postal_code": "10031",
             }
         }
-        res = self.client.post(url, data, format='json')
+        res = self.client.post(url, data, format="json")
         self.assertEqual(res.status_code, 200)
 
         # Test invalid data
@@ -90,7 +97,7 @@ class UPSTests(APITestCase):
                 "postal_code": "99999999999999",
             }
         }
-        res = self.client.post(url, data, format='json')
+        res = self.client.post(url, data, format="json")
         self.assertEqual(res.status_code, 400)
 
         data = {
@@ -98,32 +105,36 @@ class UPSTests(APITestCase):
                 "postal_code": "",
             }
         }
-        res = self.client.post(url, data, format='json')
+        res = self.client.post(url, data, format="json")
         self.assertEqual(res.status_code, 400)
-
 
     @setting(UPS_BUFFER_DAYS=get_buffer)
     def test_callable_buffer_time(self):
-        url = reverse('time-in-transit')
+        url = reverse("time-in-transit")
         data = {
             "ship_to": {
                 "postal_code": "10031",
             }
         }
         with self.assertRaises(CallException):
-            self.client.post(url, data, format='json')
-
+            self.client.post(url, data, format="json")
 
     @setting(UPS_USERNAME="fail")
     @responses.activate
     def test_auth_fail(self):
-        responses.add(responses.POST, ups_url, body=BAD_AUTH_RESPONSE, status=200, content_type='application/json')
-        url = reverse('time-in-transit')
+        responses.add(
+            responses.POST,
+            ups_url,
+            body=BAD_AUTH_RESPONSE,
+            status=200,
+            content_type="application/json",
+        )
+        url = reverse("time-in-transit")
         data = {
             "ship_to": {
                 "postal_code": "10031",
             }
         }
-        res = self.client.post(url, data, format='json')
+        res = self.client.post(url, data, format="json")
         self.assertEqual(res.status_code, 400)
-        self.assertEqual(res.data['detail'], "Invalid Access License number")
+        self.assertEqual(res.data["detail"], "Invalid Access License number")

@@ -4,4 +4,4 @@ from django.apps import AppConfig
 
 
 class UpsConfig(AppConfig):
-    name = 'ups_tnt'
+    name = "ups_tnt"
