@@ -1,7 +1,8 @@
-from django.conf.urls import include, url
+from django.conf.urls import include
+from django.urls import re_path
 from django.contrib import admin
 
 urlpatterns = [
-    url(r"^api/", include("ups_tnt.urls")),
-    url(r"^admin/", admin.site.urls),
+    re_path(r"^api/", include("ups_tnt.urls")),
+    re_path(r"^admin/", admin.site.urls),
 ]
