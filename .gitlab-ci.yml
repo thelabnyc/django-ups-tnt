@@ -36,6 +36,3 @@ test:
 
       - IMAGE: python:3.9
         TOX_ENVS: py39-django{220,300}-drf{310,311,312},py39-django{310,320}-drf{311,312}
-
-      - IMAGE: pypy:3
-        TOX_ENVS: pypy3-django{220,300}-drf{310,311,312},pypy3-django{310,320}-drf{311,312}
