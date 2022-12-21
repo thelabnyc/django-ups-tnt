@@ -20,8 +20,6 @@ precommit:
 
 test:
   stage: test
-  tags:
-    - django-oscar
   image: $IMAGE
   script:
     - pip install tox
