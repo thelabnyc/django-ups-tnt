@@ -20,13 +20,13 @@ precommit:
 
 test:
   stage: test
-  image: $IMAGE
+  image: "registry.gitlab.com/thelabnyc/python:${IMAGE}"
   script:
     - pip install tox
     - tox
   parallel:
     matrix:
-      - IMAGE: python:3.10
+      - IMAGE: py310
         TOX_SKIP_ENV: "^(?!py310-)"
-      - IMAGE: python:3.11
+      - IMAGE: py311
         TOX_SKIP_ENV: "^(?!py311-)"
