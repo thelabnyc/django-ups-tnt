@@ -23,7 +23,6 @@ def prepare_location(location):
 
 
 def fetch_estimated_arrival_times(ship_from=None, ship_to=None, pickup_date=None):
-
     if ship_from:
         ship_from = prepare_location(ship_from)
     else:
