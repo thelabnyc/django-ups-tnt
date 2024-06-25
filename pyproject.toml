@@ -24,7 +24,7 @@ djangorestframework = ">=3.14"
 python-dateutil = ">=2.5.2"
 
 [tool.poetry.group.dev.dependencies]
-coverage = ">=4.5.4"
+coverage = ">=7.5.3"
 flake8 = ">=3.5.0"
 responses = ">=0.5.1"
 tox = ">=2.9.1"
