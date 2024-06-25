@@ -25,6 +25,6 @@ python-dateutil = ">=2.5.2"
 
 [tool.poetry.group.dev.dependencies]
 coverage = ">=4.5.4"
-flake8 = ">=3.5.0"
+flake8 = ">=7.1.0"
 responses = ">=0.5.1"
 tox = ">=2.9.1"
