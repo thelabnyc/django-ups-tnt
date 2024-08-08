@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "django-ups-tnt"
-version = "0.0.0"
+version = "0.0.1b0"
 description = "Django wrapper around UPS Time In Transit JSON API"
 authors = ["thelab <thelabdev@thelab.co>"]
 readme = "README.rst"
