@@ -7,7 +7,7 @@ cache:
     - $HOME/.cache/pip
 
 include:
-  - component: gitlab.com/thelabnyc/thelab-ci-components/precommit@0.1.2
+  - component: gitlab.com/thelabnyc/thelab-ci-components/precommit@0.2.0
 
 test:
   stage: test
