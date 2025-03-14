@@ -26,7 +26,7 @@ python-dateutil = ">=2.9.0.post0"
 [tool.poetry.group.dev.dependencies]
 coverage = ">=7.6.12"
 flake8 = ">=7.1.2"
-responses = ">=0.25.6"
+responses = ">=0.25.7"
 tox = ">=4.24.2"
 
 [tool.commitizen]
